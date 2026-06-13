@@ -2,7 +2,8 @@
 import { Router } from "express";
 
 import prisma from "./db.js";
-import { createUser, loginUser } from "./controllers/user-controller.js";
+import { createUser, loginUser, getMe } from "./controllers/user-controller.js";
+import { authMiddleware } from "./middlewares/auth-middleware.js";
 
 // Aqui criamos um agrupador de rotas, como uma “lista de caminhos” da API.
 const routes = Router();
@@ -36,6 +37,7 @@ routes.get("/users-test", async (req, res) => {
 
 routes.post("/register", createUser);
 routes.post("/login", loginUser);
+routes.get("/me", authMiddleware, getMe);
 
 // Aqui estamos exportando as rotas para usar no index.js.
 export default routes;

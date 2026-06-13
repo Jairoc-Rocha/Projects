@@ -20,7 +20,7 @@ app.use(
   }),
 );
 
-// Configurando o cookie-parser. 
+// Configurando o cookie-parser.
 app.use(cookieParser());
 // Essa linha permite que o backend receba dados em formato JSON.
 app.use(express.json());

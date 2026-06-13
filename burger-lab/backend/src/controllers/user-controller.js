@@ -148,3 +148,10 @@ export async function loginUser(req, res) {
     });
   }
 }
+
+// Criando a função getMe - Ela vai responder os dados do usuário logado
+export async function getMe(req, res) {
+  // req.user foi criado no middleware:
+  // Então a função getMe só devolve esses dados.
+  return res.status(200).json(req.user);
+}
