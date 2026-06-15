@@ -155,3 +155,16 @@ export async function getMe(req, res) {
   // Então a função getMe só devolve esses dados.
   return res.status(200).json(req.user);
 }
+
+// Criando a função para deslogar
+export async function logoutUser(req, res) {
+  // Aqui apagamos o cookie chamado token.
+  res.clearCookie("token", {
+    httpOnly: true,
+    sameSite: "lax",
+  });
+
+  return res.status(200).json({
+    message: "Logout realizado com sucesso",
+  });
+}

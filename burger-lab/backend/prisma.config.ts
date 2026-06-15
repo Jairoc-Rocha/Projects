@@ -14,6 +14,6 @@ export default defineConfig({
   },
   datasource: {
     // Diz que a URL do PostgreSQL virá do .env, pela variável DATABASE_URL.
-    url: process.env["DATABASE_URL"],
+    url: env("DATABASE_URL"),
   },
 });
