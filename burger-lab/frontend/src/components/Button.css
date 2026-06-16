@@ -1,0 +1,28 @@
+.btn {
+  border: none;
+  border-radius: 999px;
+  padding: 14px 22px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.btn-primary {
+  background-color: #ffcc18;
+  color: #11100c;
+}
+
+.btn-primary:hover {
+  filter: brightness(1.08);
+  transform: translateY(-1px);
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: #ffcc18;
+  border: 1px solid #ffcc18;
+}
+
+.btn-outline:hover {
+  background-color: rgba(255, 204, 24, 0.12);
+}
