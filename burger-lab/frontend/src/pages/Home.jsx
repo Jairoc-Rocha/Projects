@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 
 import Button from "../components/Button";
+import ProductCard from "../components/ProductCard.jsx";
 import { apiFetch } from "../services/api.js";
-import { formatterPrice } from "../utils/formatterPrice.js";
 
 import "./Home.css";
 
@@ -14,8 +14,6 @@ export default function Home() {
     try {
       const response = await apiFetch("/get-products");
       const data = await response.json();
-
-      console.log("Produtos recebidos da API:", data);
 
       if (Array.isArray(data)) {
         setProducts(data);
@@ -77,18 +75,7 @@ export default function Home() {
           ) : (
             <div className="products-grid">
               {products.map((product) => (
-                <article className="product-card" key={product.id}>
-                  <div className="product-image">🍔</div>
-                  <div className="product-info">
-                    <span>{product.category}</span>
-                    <h3>{product.name}</h3>
-                    <p>{product.description}</p>
-                    <div className="product-footer">
-                      <strong>{formatterPrice(product.price)}</strong>
-                      <Button title={`Adicionar`} />
-                    </div>
-                  </div>
-                </article>
+                <ProductCard key={product.id} product={product} />
               ))}
             </div>
           )}
