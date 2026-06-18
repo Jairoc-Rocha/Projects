@@ -3,10 +3,17 @@ import { useState, useEffect } from "react";
 import Button from "../components/Button";
 import ProductCard from "../components/ProductCard.jsx";
 import { apiFetch } from "../services/api.js";
+import { useAuth } from "../contexts/AuthContext.jsx";
+import Header from "../components/Header";
 
 import "./Home.css";
 
 export default function Home() {
+  const { user, loadingUser } = useAuth();
+
+  console.log("Usuário do contexto:", user);
+  console.log("Carregando usuário:", loadingUser);
+
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -35,6 +42,7 @@ export default function Home() {
   return (
     <>
       <main className="home-page">
+        <Header />
         <section className="hero">
           <div className="hero-content">
             <span className="hero-label">BURGER LAB</span>

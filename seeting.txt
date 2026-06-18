@@ -97,13 +97,25 @@
     "textMateRules": [
       {
         "scope": [
-          "variable.other.property",
-          "variable.other.object.property",
-          "meta.object-literal.key"
+          "entity.name.tag",
+          "entity.name.tag.tsx",
+          "entity.name.tag.jsx",
+          "punctuation.definition.tag.begin",
+          "punctuation.definition.tag.end",
         ],
         "settings": {
-          "foreground": "#4fc1ff" 
-        }
+          "foreground": "#3594f2",
+        },
+      },
+      {
+        "scope": [
+          "variable.other.property",
+          "variable.other.object.property",
+          "meta.object-literal.key",
+        ],
+        "settings": {
+          "foreground": "#4fc1ff",
+        },
       },
       {
         "scope": ["keyword"],
