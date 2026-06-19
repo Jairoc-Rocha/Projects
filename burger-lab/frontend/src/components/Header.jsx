@@ -1,5 +1,6 @@
 import { Link, useNavigate } from "react-router";
 import { useAuth } from "../contexts/AuthContext";
+import { useCart } from "../contexts/CartContext.jsx";
 import { apiFetch } from "../services/api.js";
 
 import "./Header.css";
@@ -7,6 +8,11 @@ import "./Header.css";
 export default function Header() {
   const navigate = useNavigate();
   const { user, setUser, loadingUser } = useAuth();
+  const { cartItems } = useCart();
+
+  const totalCartItems = cartItems.reduce((total, item) => {
+    return total + item.quantity;
+  }, 0);
 
   async function handleLogout() {
     try {
@@ -37,6 +43,7 @@ export default function Header() {
         ) : user ? (
           <>
             <span className="header-user">Olá, {user.name}</span>
+            <span className="header-cart">Carrinho ({totalCartItems})</span>
             <Link to="/pedidos">Pedidos</Link>
             <button type="button" onClick={handleLogout}>
               Sair

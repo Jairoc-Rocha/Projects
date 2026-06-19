@@ -1,31 +1,33 @@
+import { useNavigate } from "react-router";
+
 import Button from "./Button";
+import { useAuth } from "../contexts/AuthContext";
+import { useCart } from "../contexts/CartContext";
 import { apiFetch } from "../services/api";
 import { formatterPrice } from "../utils/formatterPrice";
 
 import "./ProductCard.css";
 
 export default function ProductCard({ product }) {
+  const navigate = useNavigate();
+
+  const { user } = useAuth();
+  const { addToCart } = useCart();
+
   async function handleAddToCart() {
-    try {
-      const response = await apiFetch("/create-cart-item", {
-        method: "POST",
-        body: JSON.stringify({
-          productId: product.id,
-        }),
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        console.log("Erro da API: ", data.message);
-        return;
-      }
-
-      console.log("Produto adicionado: ", data);
-    } catch (error) {
-      console.log("Erro ao adicionar produtono carrinho:");
-      console.log(error);
+    if (!user) {
+      navigate("/login");
+      return;
     }
+
+    const result = await addToCart(product.id);
+
+    if (!result.success) {
+      console.log("Erro ao adicionar: ", result.message);
+      return;
+    }
+
+    console.log("Produto adicionado: ", result.message);
   }
 
   return (

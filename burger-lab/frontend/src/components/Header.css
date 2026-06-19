@@ -59,6 +59,11 @@
   font-weight: 700;
 }
 
+.header-cart {
+  color: #ffcc18;
+  font-weight: 900;
+}
+
 @media (max-width: 620px) {
   .header {
     align-items: flex-start;

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router";
 
 import Button from "../components/Button";
+import { useAuth } from "../contexts/AuthContext";
 import { apiFetch } from "../services/api";
 
 import "./Login.css";
@@ -13,6 +14,8 @@ export default function Login() {
   const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
+
+  const { checkAuth } = useAuth();
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -35,6 +38,8 @@ export default function Login() {
         setErrorMessage(data.message || "Erro ao fazer login");
         return;
       }
+
+      await checkAuth();
 
       navigate("/");
     } catch (error) {
