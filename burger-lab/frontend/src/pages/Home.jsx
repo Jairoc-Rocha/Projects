@@ -1,6 +1,8 @@
 import Button from "../components/Button";
 import Container from "../components/Container";
+import ProductCard from "../components/ProductCard";
 import SectionTittle from "../components/SectionTittle";
+import { products } from "../data/products";
 
 export default function Home() {
   return (
@@ -94,10 +96,16 @@ export default function Home() {
       <section className="py-24">
         <Container>
           <SectionTittle
-            eyebrow={`Cardápio`}
-            title={`Experimentos disponíveis`}
-            description={`Escolha seu burger, porção ou bebiba favorita.`}
+            eyebrow="Cardápio"
+            title="Experimentos disponíveis"
+            description="Escolha seu burger, porção ou bebiba favorita."
           />
+
+          <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {products.map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+          </div>
         </Container>
       </section>
     </main>
