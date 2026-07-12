@@ -1,10 +1,20 @@
+import { useState } from "react";
+
 import Button from "../components/Button";
+import CategoryFilter from "../components/CategoryFilter";
 import Container from "../components/Container";
 import ProductCard from "../components/ProductCard";
 import SectionTittle from "../components/SectionTittle";
 import { products } from "../data/products";
 
 export default function Home() {
+  const [activeCategory, setActiveCategory] = useState("all");
+
+  const filteredProducts =
+    activeCategory === "all"
+      ? products
+      : products.filter((product) => product.category === activeCategory);
+
   return (
     <main>
       <section className="min-h-screen pt-20">
@@ -25,7 +35,12 @@ export default function Home() {
             </p>
 
             <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center lg:justify-start">
-              <Button>Ver cardápio</Button>
+              <a
+                href="#cardapio"
+                className="rounded-full bg-yellow-400 px-8 py-3 font-black text-zinc-950 transition hover:bg-yellow-300"
+              >
+                Ver cardápio
+              </a>
 
               <Button variant="secondary">Criar conta</Button>
             </div>
@@ -93,7 +108,7 @@ export default function Home() {
         </Container>
       </section>
 
-      <section className="py-24">
+      <section id="cardapio" className="py-24 scroll-mt-20">
         <Container>
           <SectionTittle
             eyebrow="Cardápio"
@@ -101,8 +116,13 @@ export default function Home() {
             description="Escolha seu burger, porção ou bebiba favorita."
           />
 
+          <CategoryFilter
+            activeCategory={activeCategory}
+            onChangeCategory={setActiveCategory}
+          />
+
           <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {products.map((product) => (
+            {filteredProducts.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
           </div>

@@ -1,0 +1,3 @@
+export function calculateCartQuantity(cartItems) {
+  return cartItems.reduce((total, item) => total + item.quantity, 0);
+}
