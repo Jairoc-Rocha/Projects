@@ -12,13 +12,11 @@ export default function Button({
   };
 
   return (
-    <>
-      <button
-        onClick={onClick}
-        className={`cursor-pointer rounded-xl px-6 py-3 font-bold transition ${buttonClasses[variant]}${className}`}
-      >
-        {children}
-      </button>
-    </>
+    <button
+      onClick={onClick}
+      className={`cursor-pointer rounded-xl px-6 py-3 font-bold transition duration-300 hover:scale-105 active:scale-95 ${buttonClasses[variant]}${className}`}
+    >
+      {children}
+    </button>
   );
 }
