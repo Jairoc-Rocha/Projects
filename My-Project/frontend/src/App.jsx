@@ -1,12 +1,5 @@
-import "./App.css";
+import AppRoutes from "./routes/AppRoutes";
 
-function App() {
-  return (
-    <>
-      <h1>Burger Lab</h1>
-      <p>Projeto final desenvolvido com React e CSS puro.</p>
-    </>
-  );
+export default function App() {
+  return <AppRoutes />;
 }
-
-export default App;

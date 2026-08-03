@@ -3,29 +3,29 @@
 :root {
   font-family: "Rajdhani", Arial, Helvetica, sans-serif;
 
-  --fonte-principal: "Rajdhani", Arial, Helvetica, sans-serif;
-  --fonte-destaque: "Oxanium", Arial, Helvetica, sans-serif;
-
   color: #ffffff;
   background-color: #09090b;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
 
-  --cor-fundo: #09090b;
-  --cor-superficie: #18181b;
-  --cor-superficie-clara: #27272a;
-  --cor-borda: #3f3f46;
+  --font-primary: "Rajdhani", Arial, Helvetica, sans-serif;
+  --font-highlight: "Oxanium", Arial, Helvetica, sans-serif;
 
-  --cor-texto-principal: #ffffff;
-  --cor-texto-secundario: #d4d4d8;
-  --cor-texto-suave: #a1a1aa;
+  --color-background: #09090b;
+  --color-surface: #18181b;
+  --color-surface-light: #27272a;
+  --color-border: #3f3f46;
 
-  --cor-destaque: #fbbf24;
-  --cor-destaque-hover: #f59e0b;
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #d4d4d8;
+  --color-text-soft: #a1a1aa;
 
-  --cor-sucesso: #16a34a;
-  --cor-perigo: #dc2626;
+  --color-highlight: #fbbf24;
+  --color-highlight-hover: #f59e0b;
+
+  --color-success: #16a34a;
+  --color-danger: #dc2626;
 }
 
 * {
@@ -39,12 +39,13 @@ html {
 }
 
 body {
-  font-family: var(--fonte-principal);
   min-width: 320px;
   min-height: 100vh;
 
-  background-color: var(--cor-fundo);
-  color: var(--cor-texto-principal);
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
+
+  font-family: var(--font-primary);
 }
 
 button,
@@ -68,22 +69,13 @@ a {
   text-decoration: none;
 }
 
-h1,
-h2,
-h3 {
-  font-family: var(--fonte-destaque);
+.project-label {
+  color: var(--color-highlight);
 
-  .logo {
-    font-family: var(--fonte-destaque);
-    font-size: 32px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-  }
+  font-family: var(--font-highlight);
+  font-size: 14px;
+  font-weight: 700;
 
-  .botao {
-    font-family: var(--fonte-destaque);
-    font-weight: 600;
-    letter-spacing: 0.5px;
-  }
+  letter-spacing: 4px;
+  text-transform: uppercase;
 }
