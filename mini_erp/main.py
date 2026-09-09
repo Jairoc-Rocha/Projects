@@ -1,3 +1,10 @@
+def buscar_contacto_por_codigo(lista_contactos, codigo_buscado):
+    for contacto in lista_contactos:
+        if contacto["codigo"] == codigo_buscado:
+            return contacto
+        
+    return None
+
 contactos = []
 
 while True:
@@ -23,14 +30,9 @@ while True:
 
         codigo = int(input("Código: "))
 
-        codigo_duplicado = False
-
-        for contacto in contactos:
-            if contacto["codigo"] == codigo:
-                codigo_duplicado = True
-                break
-
-        if codigo_duplicado:
+        contacto_existente = buscar_contacto_por_codigo(contactos, codigo)
+        
+        if contacto_existente is not None:
             print("Ya existe un contacto con este código.")
 
 
@@ -105,12 +107,7 @@ while True:
 
         codigo_buscado = int(input("Introduzca el código del contacto: "))
 
-        contacto_encontrado = None
-
-        for contacto in contactos:
-            if contacto["codigo"] == codigo_buscado:
-                contacto_encontrado = contacto
-                break
+        contacto_encontrado = buscar_contacto_por_codigo(contactos, codigo_buscado)
 
         if contacto_encontrado is None:
             print("Contacto no encontrado.")
